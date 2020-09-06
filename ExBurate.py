@@ -25,8 +25,8 @@ class TestWindow(wx.Frame):
         static_line1 = wx.StaticLine(self.panel)
         VSizer.Add(static_line1, 0, wx.EXPAND|wx.ALL, 5)
 
-        self.png = wx.StaticBitmap(self, -1, wx.Bitmap("Background.png", wx.BITMAP_TYPE_ANY))
-        VSizer.Add(self.png, 0, wx.ALL, 5)
+        #self.png = wx.StaticBitmap(self, -1, wx.Bitmap("Background.png", wx.BITMAP_TYPE_ANY))
+        #VSizer.Add(self.png, 0, wx.ALL, 5)
 
         self.NameText = wx.StaticText(self.panel, wx.ID_ANY, label="ExBurate ver.0.1")
         VSizer.Add(self.NameText, 0, wx.CENTER|wx.ALL, 5)
