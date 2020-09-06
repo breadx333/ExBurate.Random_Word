@@ -8,17 +8,19 @@ class TestWindow(wx.Frame):
         random_word = random.choice(f.read().split("\n"))
         self.chText.SetLabel(random_word)
         self.panel.Layout()
-        f.close()
 
     def AddWordEnter(self, event):
         f1 = open("Words.txt", "a")
         n = self.AddBox.GetValue()
-        f1.write(n + "\n")
-        self.AddBox.SetValue("")
-        f1.close()
+        
+        if n == "" or len(n.replace(" ", "")) == 0:
+            f1.close()
+        else:
+            f1.write("\n" + n)
+            self.AddBox.SetValue("")
         
     def __init__(self, parent, title):
-        wx.Frame.__init__(self, None, title=title, )
+        wx.Panel.__init__(self, None, title=title)
 
         self.panel = wx.Panel(self, wx.ID_ANY)
 
@@ -55,12 +57,15 @@ class TestWindow(wx.Frame):
 
 if __name__ == "__main__":
     try:
-        check = open("Words.txt", "r")
-        check.close()
+        Rf = open("Words.txt", "r")
+        Rf.close()
     except FileNotFoundError:
-        xcreate = open("Words.txt", "x")
-        xcreate.close
-        
+        xf = open("Words.txt", "x")
+        xf.close()
+        z = open("Words.txt", "a")
+        z.write("Click Random")
+        z.close()
+   
     app = wx.App()
-    frame = TestWindow(None, "ExBurate ver.0.1")
+    frame = TestWindow(None, "ExBurate ver.0.2")
     app.MainLoop()
