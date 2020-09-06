@@ -7,6 +7,7 @@ class TestWindow(wx.Frame):
         f = open("Words.txt", "r")
         random_word = random.choice(f.read().split("\n"))
         self.chText.SetLabel(random_word)
+        f.close()
         self.panel.Layout()
 
     def AddWordEnter(self, event):
@@ -17,6 +18,7 @@ class TestWindow(wx.Frame):
             f1.close()
         else:
             f1.write("\n" + n)
+            f1.close()
             self.AddBox.SetValue("")
         
     def __init__(self, parent, title):
